@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AdvancedBookSearch</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AdvancedBookSearch.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <h2 class="mt-4 mb-4">Book Catalog</h2>
+            <form class="mb-4 row gx-2 gy-3 align-items-center" method="post">
+                <div class="col-auto">
+                    <label for="keyword" class="col-form-label">Enter a Key-Word:</label>
+                </div>
+                <div class="col-auto">
+                    <input id="keyword" name="keyword" type="text" class="form-control" placeholder="e.g. computer" />
+                </div>
+                <div class="col-auto">
+                    <label for="genre" class="col-form-label">Genre</label>
+                </div>
+                <div class="col-auto">
+                    <select id="genre" name="genre" class="form-select">
+                        <option value="all">All</option>
+                        <option value="computer">Computer</option>
+                        <option value="history">History</option>
+                        <option value="memoir">Memoir</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="novel">Novel</option>
+                        <option value="scifi">Science Fiction</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <label for="price" class="col-form-label">Price</label>
+                </div>
+                <div class="col-auto">
+                    <select id="price" name="price" class="form-select">
+                        <option value="all">All</option>
+                        <option value="0:20">$0 - less than $20</option>
+                        <option value="20:40">$20 - less than $40</option>
+                        <option value="40:60">$40 - less than $60</option>
+                        <option value="60:above">$60 and above</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary" asp-action="FilterBooks">Search</button>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" asp-controller="Books" asp-action="Index">Clear</button>
+                </div>
+            </form>
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
